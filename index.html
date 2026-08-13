@@ -3,93 +3,268 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolNova - Smart Tools</title>
+
+  <title>ToolNova - Smart Online Tools</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f4f7fb;
       margin: 0;
-      padding: 40px 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
     }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
+    header {
+      padding: 50px 20px 35px;
+      text-align: center;
+      background: white;
     }
 
-    p {
-      color: #555;
+    .logo {
+      font-size: 45px;
+      font-weight: 800;
+    }
+
+    .tagline {
+      margin-top: 12px;
+      color: #666;
       font-size: 18px;
     }
 
-    .calculator {
-      background: white;
-      max-width: 400px;
-      margin: 40px auto;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
     }
 
-    input {
-      width: 90%;
-      padding: 12px;
-      margin: 8px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
+    .welcome {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: #666;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .tool-card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .tool-icon {
+      font-size: 42px;
+    }
+
+    .tool-card h3 {
+      margin: 15px 0 8px;
+    }
+
+    .tool-card p {
+      color: #777;
+      font-size: 14px;
     }
 
     button {
-      padding: 12px 25px;
       border: none;
-      border-radius: 8px;
+      padding: 12px 20px;
+      border-radius: 10px;
       background: #222;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     button:hover {
       opacity: 0.8;
     }
 
+    .calculator {
+      max-width: 500px;
+      margin: 35px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .calculator h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .calc-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .calc-buttons button {
+      margin: 0;
+    }
+
     #result {
       margin-top: 20px;
+      text-align: center;
       font-size: 22px;
       font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>⚡ ToolNova</h1>
-  <p>Smart Tools. Simple Life.</p>
+  <header>
+    <div class="logo">⚡ ToolNova</div>
+    <div class="tagline">Smart Tools. Simple Life.</div>
+  </header>
 
-  <div class="calculator">
-    <h2>Simple Calculator</h2>
+  <div class="container">
 
-    <input type="number" id="num1" placeholder="First number">
-    <input type="number" id="num2" placeholder="Second number">
+    <div class="welcome">
+      <h2>Useful Tools For Everyone</h2>
+      <p>Simple, fast and free online tools.</p>
+    </div>
 
-    <br>
+    <div class="tools">
 
-    <button onclick="addNumbers()">Add +</button>
+      <div class="tool-card">
+        <div class="tool-icon">🧮</div>
+        <h3>Calculator</h3>
+        <p>Perform basic calculations quickly.</p>
+        <button onclick="showCalculator()">Open Tool</button>
+      </div>
 
-    <div id="result">Result: 0</div>
+      <div class="tool-card">
+        <div class="tool-icon">🎂</div>
+        <h3>Age Calculator</h3>
+        <p>Calculate your exact age easily.</p>
+        <button onclick="comingSoon()">Coming Soon</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🔐</div>
+        <h3>Password Generator</h3>
+        <p>Create strong random passwords.</p>
+        <button onclick="comingSoon()">Coming Soon</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📱</div>
+        <h3>QR Generator</h3>
+        <p>Create QR codes from text or links.</p>
+        <button onclick="comingSoon()">Coming Soon</button>
+      </div>
+
+    </div>
+
+    <div class="calculator" id="calculator">
+      <h2>🧮 Calculator</h2>
+
+      <input type="number" id="num1" placeholder="First number">
+      <input type="number" id="num2" placeholder="Second number">
+
+      <div class="calc-buttons">
+        <button onclick="calculate('+')">+</button>
+        <button onclick="calculate('-')">−</button>
+        <button onclick="calculate('*')">×</button>
+        <button onclick="calculate('/')">÷</button>
+      </div>
+
+      <div id="result">Result: 0</div>
+    </div>
+
   </div>
 
+  <footer>
+    © 2026 ToolNova — Smart Tools. Simple Life.
+  </footer>
+
   <script>
-    function addNumbers() {
-      let num1 = Number(document.getElementById("num1").value);
-      let num2 = Number(document.getElementById("num2").value);
+
+    function showCalculator() {
+      document.getElementById("calculator").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function comingSoon() {
+      alert("This tool is coming soon! 🚀");
+    }
+
+    function calculate(operator) {
+
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById("result").innerText =
+          "Please enter both numbers.";
+        return;
+      }
+
+      let answer;
+
+      if (operator === "+") {
+        answer = a + b;
+      }
+
+      if (operator === "-") {
+        answer = a - b;
+      }
+
+      if (operator === "*") {
+        answer = a * b;
+      }
+
+      if (operator === "/") {
+
+        if (b === 0) {
+          document.getElementById("result").innerText =
+            "Cannot divide by zero.";
+          return;
+        }
+
+        answer = a / b;
+      }
 
       document.getElementById("result").innerText =
-        "Result: " + (num1 + num2);
+        "Result: " + answer;
     }
+
   </script>
 
 </body>
